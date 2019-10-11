@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>step04.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+	font-size: 14px;
+	padding: 0 12px;
+	line-height: 22px;
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	color: #4080D0;
+	text-decoration: none;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
+	font-size: inherit;
+	line-height: auto;
+}
+
+a:hover {
+	color: #4080D0;
+	text-decoration: underline;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left: 5px solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 14px;
+	line-height: 19px;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+.mac code {
+	font-size: 12px;
+	line-height: 18px;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+/** Theming */
+
+.vscode-light,
+.vscode-light pre code {
+	color: rgb(30, 30, 30);
+}
+
+.vscode-dark,
+.vscode-dark pre code {
+	color: #DDD;
+}
+
+.vscode-high-contrast,
+.vscode-high-contrast pre code {
+	color: white;
+}
+
+.vscode-light code {
+	color: #A31515;
+}
+
+.vscode-dark code {
+	color: #D7BA7D;
+}
+
+.vscode-light pre:not(.hljs),
+.vscode-light code > div {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre:not(.hljs),
+.vscode-dark code > div {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre:not(.hljs),
+.vscode-high-contrast code > div {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+.vscode-light blockquote,
+.vscode-dark blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.vscode-high-contrast blockquote {
+	background: transparent;
+	border-color: #fff;
+}
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family:  "Meiryo", "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+</head>
+<body>
+<h1 id="%E3%82%8A%E3%82%93%E3%81%94%E3%82%AD%E3%83%A3%E3%83%83%E3%83%8104%EF%BC%9A%E6%99%82%E9%96%93%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%97%E3%82%88%E3%81%86%EF%BC%81">りんごキャッチ04：時間を表示しよう！</h1>
+<h2 id="%E3%81%93%E3%81%AE%E3%82%AB%E3%83%AA%E3%82%AD%E3%83%A5%E3%83%A9%E3%83%A0%E3%81%AE%E3%82%B4%E3%83%BC%E3%83%AB">このカリキュラムのゴール</h2>
+<ul>
+<li>ラベルの説明と実装方法を学びます。</li>
+<li>定数について学びます。</li>
+<li>ゲーム全体の動作について学びます。</li>
+</ul>
+<p>このカリキュラムを終えると以下のような表示になります。<br>
+<img src="images/05.png" width="300px;" style="border: solid 1px #ccc;"></p>
+<h2 id="%E6%99%82%E9%96%93%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%97%E3%82%88%E3%81%86%EF%BC%81">時間を表示しよう！</h2>
+<ol>
+<li>
+<p>時間の文字（ラベル）を表示します<br>
+<code>Label（ラベル）</code>とは文字を表示するクラスです。<br>
+ゲームの残り時間をラベルを使って表示します。</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">var</span> time = <span class="hljs-keyword">new</span> Label();         <span class="hljs-comment">// ラベル生成</span>
+time.x = <span class="hljs-number">10</span>;                    <span class="hljs-comment">// ラベルX座標初期位置</span>
+time.y = <span class="hljs-number">10</span>;                    <span class="hljs-comment">// ラベルY座標初期位置</span>
+time.font = <span class="hljs-string">'20px Hiragino'</span>;    <span class="hljs-comment">// 文字の大きさ（px：ピクセルは単位、Hiragino：種類）</span>
+time.text = <span class="hljs-string">'Time: '</span>;           <span class="hljs-comment">// 表示する文字</span>
+core.rootScene.addChild(time);  <span class="hljs-comment">// ルートシーンにラベルを登録</span>
+</div></code></pre>
+</li>
+<li>
+<p>ゲームの時間を決めよう！<br>
+りんごキャッチゲームではゲーム開始から10秒経過したらゲームオーバーとする動きにしたいと思います。<br>
+まずは10秒という数字を定義しましょう。
+この時、変数 <code>var</code> ではなく定数 <code>const</code> で宣言します。<br>
+定数は一度定義するとプログラムの途中変更できない仕組みとなります。<br>
+定数であることがわかるように、定数名はすべて大文字としてください。</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">const</span> TIME = <span class="hljs-number">10</span>;    <span class="hljs-comment">// 10秒</span>
+</div></code></pre>
+</li>
+<li>
+<p>ラベルの表示を更新しよう<br>
+時間が経過する度にラベルの表示を切り替えて10秒からカウントダウンするように残り時間を表示してみます。<br>
+カウントダウンは、ルートシーン全体の <code>on('enterframe')</code>メソッドを使って、時間の経過を取得し計算することで表示します。</p>
+<pre class="hljs"><code><div>core.rootScene.on(<span class="hljs-string">'enterframe'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    time.text = <span class="hljs-string">'Time: '</span> + ((((TIME * core.fps) - core.frame)) / core.fps).toFixed(<span class="hljs-number">0</span>);
+});
+</div></code></pre>
+<ul>
+<li>
+<p><code>TIME * core.fps</code> : 10秒後のフレーム数<br>
+10秒とFPS（30）を掛け算することで10秒経過時の画面更新回数を取得します</p>
+</li>
+<li>
+<p><code>core.frame</code> : 現在のフレーム数<br>
+ゲームが開始されてから経過した画面更新回数です</p>
+</li>
+<li>
+<p><code>(TIME * core.fps) - core.frame)</code> : 残りのフレーム数<br>
+10秒経過後のFPSからゲームを開始してから経過したFPSを引くことで残りのFPSが計算されます</p>
+</li>
+<li>
+<p><code>((TIME * core.fps) - core.frame)) / core.fps)</code>: 残りの時間<br>
+残りのフレーム数をFPSで割ることで、残り時間が計算されます</p>
+</li>
+<li>
+<p><code>toFixed(0)</code>: 小数点以下の切り捨て<br>
+計算した残りの時間から小数点以下の数値を切り捨てます</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="mainjs-%E5%AE%8C%E6%88%90%E5%93%81">main.js 完成品</h2>
+<pre class="hljs"><code><div><span class="hljs-comment">// enchant.jsの利用宣言</span>
+enchant();
+
+<span class="hljs-comment">// JavaScriptプログラムを実行する定型文</span>
+<span class="hljs-built_in">window</span>.onload = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+
+    <span class="hljs-comment">// ゲームの残り時間</span>
+    <span class="hljs-keyword">const</span> TIME = <span class="hljs-number">10</span>;
+
+    <span class="hljs-comment">// ゲーム画面の生成</span>
+    <span class="hljs-keyword">var</span> core = <span class="hljs-keyword">new</span> Core(<span class="hljs-number">640</span>, <span class="hljs-number">640</span>);
+    <span class="hljs-comment">// ネコ画像の読み込み</span>
+    core.preload(<span class="hljs-string">'cat.png'</span>);
+    <span class="hljs-comment">// 画面更新間隔の設定</span>
+    core.fps = <span class="hljs-number">30</span>;
+
+    <span class="hljs-comment">// ゲームの処理</span>
+    core.onload = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+
+        <span class="hljs-comment">// ネコスプライトの生成</span>
+        <span class="hljs-keyword">var</span> cat = <span class="hljs-keyword">new</span> Sprite(<span class="hljs-number">100</span>, <span class="hljs-number">100</span>);
+        <span class="hljs-comment">// ネコ画像の設定</span>
+        cat.image = core.assets[<span class="hljs-string">'cat.png'</span>];
+        <span class="hljs-comment">// ネコの初期座標を設定</span>
+        cat.x = <span class="hljs-number">270</span>;
+        cat.y = <span class="hljs-number">500</span>;
+        <span class="hljs-comment">// ネコのサイズを設定（0.5倍）</span>
+        cat.scaleX = <span class="hljs-number">0.5</span>;
+        cat.scaleY = <span class="hljs-number">0.5</span>;
+        <span class="hljs-comment">// ネコの初期コスチュームを設定</span>
+        cat.frame = <span class="hljs-number">0</span>;
+        <span class="hljs-comment">// ネコの動き</span>
+        cat.on(<span class="hljs-string">'enterframe'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+            <span class="hljs-comment">// 左キーが押された場合</span>
+            <span class="hljs-keyword">if</span>(core.input.left) {
+                <span class="hljs-comment">// コスチュームを切り替え</span>
+                <span class="hljs-keyword">this</span>.frame = <span class="hljs-keyword">this</span>.age % <span class="hljs-number">2</span>;
+                <span class="hljs-comment">// 左に移動</span>
+                <span class="hljs-keyword">this</span>.x -= <span class="hljs-number">5</span>;
+                <span class="hljs-comment">// 左向きに変更</span>
+                <span class="hljs-keyword">this</span>.scaleX = <span class="hljs-number">-0.5</span>;
+            }
+            <span class="hljs-comment">// 右キーが押された場合</span>
+            <span class="hljs-keyword">if</span>(core.input.right) {
+                <span class="hljs-comment">// コスチュームを切り替え</span>
+                <span class="hljs-keyword">this</span>.frame = <span class="hljs-keyword">this</span>.age % <span class="hljs-number">2</span>;
+                <span class="hljs-comment">// 右に移動</span>
+                <span class="hljs-keyword">this</span>.x += <span class="hljs-number">5</span>;
+                <span class="hljs-comment">// 右向きに変更</span>
+                <span class="hljs-keyword">this</span>.scaleX = <span class="hljs-number">0.5</span>;
+            }
+        });
+        <span class="hljs-comment">// ルートシーンにネコのスプライトを登録</span>
+        core.rootScene.addChild(cat);
+
+        <span class="hljs-comment">// 残り時間ラベルの生成</span>
+        <span class="hljs-keyword">var</span> timeLabel = <span class="hljs-keyword">new</span> Label();
+        <span class="hljs-comment">// ラベルの初期位置を設定</span>
+        timeLabel.x = <span class="hljs-number">10</span>;
+        timeLabel.y = <span class="hljs-number">10</span>;
+        <span class="hljs-comment">// ラベルの文字サイズと種類を設定</span>
+        timeLabel.font = <span class="hljs-string">'20px Hiragino'</span>;
+        <span class="hljs-comment">// ラベルの初期文字を設定</span>
+        timeLabel.text = <span class="hljs-string">'Time: '</span>;
+        <span class="hljs-comment">// ルートシーンにラベルを登録</span>
+        core.rootScene.addChild(timeLabel);
+
+        <span class="hljs-comment">// ルートシーンの動き</span>
+        core.rootScene.on(<span class="hljs-string">'enterframe'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+            <span class="hljs-comment">// 残り時間を表示</span>
+            timeLabel.text = <span class="hljs-string">'Time: '</span> + ((((TIME * core.fps) - core.frame)) / core.fps).toFixed(<span class="hljs-number">0</span>);
+        });
+    }
+    <span class="hljs-comment">// ゲームスタート</span>
+    core.start();
+}
+</div></code></pre>
+<hr>
+<p>©️スタートプログラミング</p>
+
+</body>
+</html>

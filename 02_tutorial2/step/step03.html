@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>step03.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+	font-size: 14px;
+	padding: 0 12px;
+	line-height: 22px;
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	color: #4080D0;
+	text-decoration: none;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
+	font-size: inherit;
+	line-height: auto;
+}
+
+a:hover {
+	color: #4080D0;
+	text-decoration: underline;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left: 5px solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 14px;
+	line-height: 19px;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+.mac code {
+	font-size: 12px;
+	line-height: 18px;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+/** Theming */
+
+.vscode-light,
+.vscode-light pre code {
+	color: rgb(30, 30, 30);
+}
+
+.vscode-dark,
+.vscode-dark pre code {
+	color: #DDD;
+}
+
+.vscode-high-contrast,
+.vscode-high-contrast pre code {
+	color: white;
+}
+
+.vscode-light code {
+	color: #A31515;
+}
+
+.vscode-dark code {
+	color: #D7BA7D;
+}
+
+.vscode-light pre:not(.hljs),
+.vscode-light code > div {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre:not(.hljs),
+.vscode-dark code > div {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre:not(.hljs),
+.vscode-high-contrast code > div {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+.vscode-light blockquote,
+.vscode-dark blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.vscode-high-contrast blockquote {
+	background: transparent;
+	border-color: #fff;
+}
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family:  "Meiryo", "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+</head>
+<body>
+<h1 id="%E3%82%B9%E3%83%97%E3%83%A9%E3%82%A4%E3%83%88%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%A6%E3%81%BF%E3%82%88%E3%81%86%EF%BC%81">スプライトを表示してみよう！</h1>
+<p>いよいよここからは実際にプログラミングを実践しながら、基本的なenchant.jsゲームプログラミングを学んでいきましょう。</p>
+<h2 id="%E3%81%93%E3%81%AE%E3%82%AB%E3%83%AA%E3%82%AD%E3%83%A5%E3%83%A9%E3%83%A0%E3%81%AE%E3%81%AD%E3%82%89%E3%81%84">このカリキュラムのねらい</h2>
+<ul>
+<li>ゲーム画面の生成と開始について学びます</li>
+<li>スプライトの生成と表示について学びます</li>
+</ul>
+<h2 id="%E3%81%AF%E3%81%98%E3%82%81%E3%81%A6%E3%81%AEenchantjs%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0">はじめてのenchant.jsプログラミング</h2>
+<h3 id="%E3%82%B2%E3%83%BC%E3%83%A0%E7%94%BB%E9%9D%A2%E3%81%AE%E7%94%9F%E6%88%90%E3%81%A8%E3%82%B2%E3%83%BC%E3%83%A0%E3%81%AE%E9%96%8B%E5%A7%8B">ゲーム画面の生成とゲームの開始</h3>
+<p>ゲームを開始するには必ず <code>Core</code> オブジェクトを生成する必要があります。<br>
+引数に画面サイズ（X座標, Y座標）を渡すので、下記の場合は640×640の画面サイズを持ったゲームが作成されます。</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// ゲーム画面の生成</span>
+<span class="hljs-keyword">var</span> core = <span class="hljs-keyword">new</span> Core(<span class="hljs-number">640</span>, <span class="hljs-number">640</span>);
+<span class="hljs-comment">// ゲームスタート</span>
+core.start();
+<span class="hljs-comment">// ゲームの処理</span>
+core.onload = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-comment">// ここにゲームの処理を書く</span>
+}
+</div></code></pre>
+<p>※ ゲーム画面の最大値は640です。<br>
+※ 上記コードはすでにテンプレートに書いてあるので新たに記入する必要はありません。</p>
+<h3 id="%E3%82%B9%E3%83%97%E3%83%A9%E3%82%A4%E3%83%88%E3%81%AE%E7%94%9F%E6%88%90%E3%81%A8%E8%A1%A8%E7%A4%BA">スプライトの生成と表示</h3>
+<p>スプライトの表示は画像の読み込みと、スプライトの生成処理が必要となります。</p>
+<ul>
+<li>ゲームに画像を読み込む</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-comment">// クマの画像を読み込む</span>
+core.preload(<span class="hljs-string">'bear.png'</span>);
+</div></code></pre>
+<ul>
+<li>スプライトを生成し、ゲーム画面に登録する</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-comment">// スプライトを生成（32×32の大きさ）</span>
+<span class="hljs-keyword">var</span> bear = <span class="hljs-keyword">new</span> Sprite(<span class="hljs-number">32</span>, <span class="hljs-number">32</span>);
+<span class="hljs-comment">// スプライトに画像を設定する</span>
+bear.image = core.assets[<span class="hljs-string">'bear.png'</span>];
+<span class="hljs-comment">// ルートシーンにクマのスプライトを登録する</span>
+core.rootScene.addChild(bear);
+</div></code></pre>
+<p>完成するとこのようにクマの画像が表示されます。<br>
+<img src="images/06.png" width="300px;" style="border: solid 1px #ccc;"></p>
+<h4 id="%E3%82%B9%E3%83%97%E3%83%A9%E3%82%A4%E3%83%88%E3%81%AE%E4%BD%8D%E7%BD%AE%E3%82%92%E5%A4%89%E6%9B%B4%E3%81%99%E3%82%8B">スプライトの位置を変更する</h4>
+<p>スプライトは座標を指定することで位置を変更することができます。</p>
+<p>スクラッチでは、下記のブロックを使っていた部分です。<br>
+<img src="images/07.png" width="218px;" style="border: solid 1px #ccc;"></p>
+<pre class="hljs"><code><div>bear.x = <span class="hljs-number">100</span>;
+bear.y = <span class="hljs-number">50</span>;
+</div></code></pre>
+<p>完成するとクマの位置が移動します。<br>
+<img src="images/08.png" width="300px;" style="border: solid 1px #ccc;"></p>
+<h3 id="%E3%82%B9%E3%83%97%E3%83%A9%E3%82%A4%E3%83%88%E3%81%AE%E3%82%B3%E3%82%B9%E3%83%81%E3%83%A5%E3%83%BC%E3%83%A0%E3%81%AE%E5%88%87%E3%82%8A%E6%9B%BF%E3%81%88">スプライトのコスチュームの切り替え</h3>
+<p>スクラッチではスプライトの見た目は<code>コスチューム</code>を変えることで変更されました。<br>
+<img src="images/09.png" width="191px;" style="border: solid 1px #ccc;"></p>
+<p>enchant.jsではコスチュームではなく、画像の中の位置を移動すること（<code>frame: フレーム</code>）で見た目を変更します。<br>
+<img src="images/10.png" width="500px;" style="border: solid 1px #ccc;"></p>
+<p>フレームは左上を0とし、1、2と切り替えることで、左上から32ずつずらして読み込まれます。</p>
+<pre class="hljs"><code><div>bear.frame = <span class="hljs-number">2</span>;
+</div></code></pre>
+<p>完成するとクマの見た目が3つ目の絵に変わります。<br>
+<img src="images/11.png" width="300px;" style="border: solid 1px #ccc;"></p>
+<h2 id="%E5%AE%8C%E6%88%90%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0">完成プログラム</h2>
+<pre class="hljs"><code><div><span class="hljs-comment">// enchant.js利用宣言</span>
+enchant();
+
+<span class="hljs-comment">// JavaScriptプログラム実行</span>
+<span class="hljs-built_in">window</span>.onload = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+
+    <span class="hljs-comment">// ゲーム画面生成</span>
+    <span class="hljs-keyword">var</span> core = <span class="hljs-keyword">new</span> Core(<span class="hljs-number">640</span>, <span class="hljs-number">640</span>);
+    core.preload(<span class="hljs-string">'bear.png'</span>);
+    <span class="hljs-comment">// ゲーム開始宣言</span>
+    core.start();
+    <span class="hljs-comment">// ゲーム実行</span>
+    core.onload = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-comment">// スプライトを生成</span>
+        <span class="hljs-keyword">var</span> bear = <span class="hljs-keyword">new</span> Sprite(<span class="hljs-number">32</span>, <span class="hljs-number">32</span>);
+        <span class="hljs-comment">// スプライトの初期位置を設定</span>
+        bear.x = <span class="hljs-number">100</span>;
+        bear.y = <span class="hljs-number">50</span>;
+        <span class="hljs-comment">// スプライトのコスチュームを設定</span>
+        bear.frame = <span class="hljs-number">2</span>;
+        <span class="hljs-comment">// スプライトにクマの画像を設定</span>
+        bear.image = core.assets[<span class="hljs-string">'bear.png'</span>];
+        <span class="hljs-comment">// ルートシーンにクマのスプライトを登録</span>
+        core.rootScene.addChild(bear);
+    };
+};
+</div></code></pre>
+<hr>
+<p>©️スタートプログラミング</p>
+
+</body>
+</html>

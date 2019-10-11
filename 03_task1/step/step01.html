@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>step01.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+	font-size: 14px;
+	padding: 0 12px;
+	line-height: 22px;
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	color: #4080D0;
+	text-decoration: none;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
+	font-size: inherit;
+	line-height: auto;
+}
+
+a:hover {
+	color: #4080D0;
+	text-decoration: underline;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left: 5px solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 14px;
+	line-height: 19px;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+.mac code {
+	font-size: 12px;
+	line-height: 18px;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+/** Theming */
+
+.vscode-light,
+.vscode-light pre code {
+	color: rgb(30, 30, 30);
+}
+
+.vscode-dark,
+.vscode-dark pre code {
+	color: #DDD;
+}
+
+.vscode-high-contrast,
+.vscode-high-contrast pre code {
+	color: white;
+}
+
+.vscode-light code {
+	color: #A31515;
+}
+
+.vscode-dark code {
+	color: #D7BA7D;
+}
+
+.vscode-light pre:not(.hljs),
+.vscode-light code > div {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre:not(.hljs),
+.vscode-dark code > div {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre:not(.hljs),
+.vscode-high-contrast code > div {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+.vscode-light blockquote,
+.vscode-dark blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.vscode-high-contrast blockquote {
+	background: transparent;
+	border-color: #fff;
+}
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family:  "Meiryo", "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+</head>
+<body>
+<h1 id="%E3%82%8A%E3%82%93%E3%81%94%E3%82%AD%E3%83%A3%E3%83%83%E3%83%8101%EF%BC%9A%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89">りんごキャッチ01：環境構築</h1>
+<p>ここからはスクラッチで作った「りんごキャッチ」ゲームを練習課題として、<code>enchant.js</code>を学んでいきます。<br>
+まずは開発するための環境を作ってしましょう。<br>
+このカリキュラムの最後には以下のようなゲームが完成します。</p>
+<img src="images/01.png" width="500px;" style="border: solid 1px #ccc;">
+<h2 id="%E3%81%93%E3%81%AE%E3%82%AB%E3%83%AA%E3%82%AD%E3%83%A5%E3%83%A9%E3%83%A0%E3%81%AE%E3%82%B4%E3%83%BC%E3%83%AB">このカリキュラムのゴール</h2>
+<ul>
+<li>ゲームを作るための環境の作り方を学びます</li>
+<li>ネコのスプライトを作り表示します</li>
+</ul>
+<p>このカリキュラムを終えると以下のような表示になります。<br>
+<img src="images/02.png" width="300px;" style="border: solid 1px #ccc;"></p>
+<h2 id="%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89">環境構築</h2>
+<p>まずはゲームを開発するための環境を構築していきます。</p>
+<ol>
+<li>
+<p>ダウンロード＆解凍<br>
+公式サイトからenchant.js本体をダウンロードします。<br>
+<a href="https://github.com/wise9/enchant.js">ソースコード</a></p>
+</li>
+<li>
+<p>任意のフォルダを作成</p>
+</li>
+<li>
+<p>解凍したフォルダからコピー<br>
+解答したenchant.jsのフォルダから、作成した任意のフォルダに以下のファイルをコピーします。</p>
+<pre class="hljs"><code><div>/enchant.min.js  
+/examples/beginner/hellobear/index.html
+</div></code></pre>
+</li>
+<li>
+<p>教材から素材をコピー<br>
+画像と音声のファイルを任意のフォルダに以下をコピーしてください。</p>
+<pre class="hljs"><code><div>application/apple.png
+application/cat.png
+application/meow.wav
+</div></code></pre>
+</li>
+<li>
+<p>テキストエディタで main.js を作成し保存
+新規で空のファイルを「main.js」という名前で作成します。</p>
+</li>
+<li>
+<p>enchant.js定型文の実装
+enchant.jsのお決まり定型文をmain.jsに書きます。</p>
+<pre class="hljs"><code><div>enchant();
+<span class="hljs-built_in">window</span>.onload = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Hello!'</span>);
+}
+</div></code></pre>
+</li>
+<li>
+<p><code>enchant.min.js</code>へのパスを設定<br>
+<code>index.html</code>を開き、enchant.jsの読み込みのパスを修正し、enchant.jsが正しく動作するようにします。</p>
+<ul>
+<li>修正前</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../../../build/enchant.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</div></code></pre>
+<ul>
+<li>修正後</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"enchant.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</div></code></pre>
+</li>
+<li>
+<p>タイトルの設定
+<code>index.html</code>を開き、ブラウザでゲームを起動した時にタブ部分にタイトルが表示されるよう修正します。</p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"apple-mobile-web-app-capable"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"yes"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>りんごキャッチ<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>    <span class="hljs-comment">&lt;!-- この1行を追加 --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"enchant.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+</div></code></pre>
+</li>
+<li>
+<p><code>index.html</code>をダブルクリックしChromeを起動</p>
+</li>
+<li>
+<p>タブに「りんごキャッチ」と表示されていることを確認
+<br>
+<img src="images/03.png" width="200px;">
+<br></p>
+</li>
+<li>
+<p>検証でログを確認<br>
+コンソールログで<code>&quot;Hello!&quot;</code>と表示されていれば成功です。</p>
+</li>
+</ol>
+<br>
+<h2 id="%E3%82%B2%E3%83%BC%E3%83%A0%E3%81%AE%E5%9F%BA%E6%9C%AC%E8%A8%AD%E5%AE%9A">ゲームの基本設定</h2>
+<p>続いてゲームとして動作させるための基本設定を行っていきます。</p>
+<ol>
+<li>
+<p>coreオブジェクトを生成</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">var</span> core = <span class="hljs-keyword">new</span> Core(<span class="hljs-number">640</span>, <span class="hljs-number">640</span>);
+</div></code></pre>
+</li>
+<li>
+<p>ネコの画像を読み込み</p>
+<pre class="hljs"><code><div>core.preload(<span class="hljs-string">'cat.png'</span>);
+</div></code></pre>
+</li>
+<li>
+<p>ゲームの開始を実行</p>
+<pre class="hljs"><code><div>core.onload = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+}
+core.start();
+</div></code></pre>
+</li>
+<li>
+<p>ネコのスプライトを生成</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">var</span> cat = <span class="hljs-keyword">new</span> Sprite(<span class="hljs-number">100</span>, <span class="hljs-number">100</span>);
+<span class="hljs-comment">// 画像読み込み</span>
+cat.image = core.assets[<span class="hljs-string">'cat.png'</span>];
+<span class="hljs-comment">// X座標を10に設定</span>
+cat.x = <span class="hljs-number">10</span>;
+<span class="hljs-comment">// Y座標を10に設定</span>
+cat.y = <span class="hljs-number">10</span>;
+</div></code></pre>
+</li>
+<li>
+<p>ネコのスプライトをルートシーンに登録
+スプライトはシーンに登録することで表示されるようになります。<br>
+生成したネコのスプライトをルートシーンに登録します。</p>
+<pre class="hljs"><code><div>core.rootScene.addChild(cat);
+</div></code></pre>
+</li>
+</ol>
+<p>全て入力できたら開発する土台のソースコードの完成です。<br>
+次回からいよいよゲームの動きなど作っていきます。</p>
+<h2 id="mainjs-%E5%AE%8C%E6%88%90%E5%93%81">main.js 完成品</h2>
+<pre class="hljs"><code><div><span class="hljs-comment">// enchant.jsの利用宣言</span>
+enchant();
+
+<span class="hljs-comment">// JavaScriptプログラムを実行する定型文</span>
+<span class="hljs-built_in">window</span>.onload = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+
+<span class="hljs-comment">// ゲーム画面の生成</span>
+    <span class="hljs-keyword">var</span> core = <span class="hljs-keyword">new</span> Core(<span class="hljs-number">640</span>, <span class="hljs-number">640</span>);
+    <span class="hljs-comment">// ネコ画像の読み込み</span>
+    core.preload(<span class="hljs-string">'cat.png'</span>);
+
+    <span class="hljs-comment">// ゲームの処理</span>
+    core.onload = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-comment">// ネコスプライトの生成</span>
+        <span class="hljs-keyword">var</span> cat = <span class="hljs-keyword">new</span> Sprite(<span class="hljs-number">100</span>, <span class="hljs-number">100</span>);
+        <span class="hljs-comment">// ネコ画像の設定</span>
+        cat.image = core.assets[<span class="hljs-string">'cat.png'</span>];
+        <span class="hljs-comment">// ネコの初期座標を設定</span>
+        cat.x = <span class="hljs-number">10</span>;
+        cat.y = <span class="hljs-number">10</span>;
+        <span class="hljs-comment">// ルートシーンにネコのスプライトを登録</span>
+        core.rootScene.addChild(cat);
+    }
+    <span class="hljs-comment">// ゲームスタート</span>
+    core.start();
+}
+</div></code></pre>
+<hr>
+<p>©️スタートプログラミング</p>
+
+</body>
+</html>

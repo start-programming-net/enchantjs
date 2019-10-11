@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>step02.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+	font-size: 14px;
+	padding: 0 12px;
+	line-height: 22px;
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	color: #4080D0;
+	text-decoration: none;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
+	font-size: inherit;
+	line-height: auto;
+}
+
+a:hover {
+	color: #4080D0;
+	text-decoration: underline;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left: 5px solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 14px;
+	line-height: 19px;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+.mac code {
+	font-size: 12px;
+	line-height: 18px;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+/** Theming */
+
+.vscode-light,
+.vscode-light pre code {
+	color: rgb(30, 30, 30);
+}
+
+.vscode-dark,
+.vscode-dark pre code {
+	color: #DDD;
+}
+
+.vscode-high-contrast,
+.vscode-high-contrast pre code {
+	color: white;
+}
+
+.vscode-light code {
+	color: #A31515;
+}
+
+.vscode-dark code {
+	color: #D7BA7D;
+}
+
+.vscode-light pre:not(.hljs),
+.vscode-light code > div {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre:not(.hljs),
+.vscode-dark code > div {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre:not(.hljs),
+.vscode-high-contrast code > div {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+.vscode-light blockquote,
+.vscode-dark blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.vscode-high-contrast blockquote {
+	background: transparent;
+	border-color: #fff;
+}
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family:  "Meiryo", "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+</head>
+<body>
+<h1 id="%E5%9F%BA%E6%9C%AC%E3%82%92%E7%90%86%E8%A7%A3%E3%81%97%E3%82%88%E3%81%86%EF%BC%81">基本を理解しよう！</h1>
+<p>enchant.jsの開発環境の構築ができたところで、まずはenchant.jsで出てくる用語の意味や役割について学んでいきましょう。<br>
+また、ゲームの仕様やJavaScriptでプログラミングする上での作法について学びます。</p>
+<h2 id="%E3%81%93%E3%81%AE%E3%82%AB%E3%83%AA%E3%82%AD%E3%83%A5%E3%83%A9%E3%83%A0%E3%81%AE%E3%81%AD%E3%82%89%E3%81%84">このカリキュラムのねらい</h2>
+<ul>
+<li>enchant.js特有のさまざまな用語を学びます</li>
+<li>ゲーム仕様の概念を学びます</li>
+<li>JavaScriptプログラミング作法を学びます</li>
+</ul>
+<h2 id="enchantjs%E7%94%A8%E8%AA%9E%E8%A7%A3%E8%AA%AC">enchant.js用語解説</h2>
+<p>enchant.jsでは、スクラッチやマインクラフトにはなかった用語や役割を持つ仕組みが出てきます。<br>
+ゲームを開発する上でとても大切なので、それぞれ理解してから進めていきましょう。</p>
+<ul>
+<li>
+<p>Core（コア）<br>
+ゲームの本体を表します。<br>
+<code>コアオブジェクト</code>などと呼びますので覚えましょう。<br>
+ゲーム画面のサイズを決めたり、ゲーム全体の開始や終了など、ゲーム機のような役割をします。</p>
+</li>
+<li>
+<p>Scene（シーン）<br>
+ゲームの画面単位をシーンといいます。<br>
+初期画面は <code>rootScene</code>（ルートシーン）というシーンが <code>Core</code> に用意されており、ゲームが開始する最初の画面は必ず <code>rootScene</code> から始まります。</p>
+</li>
+<li>
+<p>Sprite（スプライト）<br>
+スクラッチと同じくキャラクター（登場人物）のことを <code>Sprite</code>（スプライト）と呼びます。</p>
+</li>
+<li>
+<p>FPS（エフピーエス）<br>
+1秒間あたりの画面更新回数のことをFPSと言います。<br>
+何も設定しなければ通常1秒間あたり60回の更新をしていますが、例えば30回など減らすことでゲーム全体のスピードを制御することができます。</p>
+</li>
+<li>
+<p>Class（クラス）<br>
+クラスは簡単に言うと設計図のようなものです。<br>
+スクラッチではスプライトをクローンすることができましたが、enchant.jsではスプライトをクローンすることはできず、同じようなスプライトをいくつもクローンする場合は、クラスとしてクローンの設計図を作成しその後クローンすることができるようになります。<br>
+クラスはクローンをするための設計図だと覚えましょう。</p>
+</li>
+<li>
+<p>Label（ラベル）<br>
+ラベルは文字を表示するためのスプライトです。<br>
+文字サイズや文字の色なども設計することができます。</p>
+</li>
+</ul>
+<h2 id="enchantjs%E3%82%B2%E3%83%BC%E3%83%A0%E4%BB%95%E6%A7%98">enchant.jsゲーム仕様</h2>
+<h3 id="%E5%BA%A7%E6%A8%99%E3%81%AE%E8%80%83%E3%81%88%E6%96%B9">座標の考え方</h3>
+<p>スクラッチでは画面中心の座標が（x:0, y:0）でしたが、enchant.jsでは左上の座標が（x:0, y:0）となります。<br>
+また、X座標・Y座標ともに -（マイナス）の概念はなく、右にいくとX座標をプラス、下にいくとY座標をプラスすることになります。</p>
+<p>さらに、スクラッチは画面の最大がX座標は「-240 〜 +240」、Y座標は「-180 〜 +180」でしたが、enchant.jsでは最大640として自由に画面のサイズを決めることができます。</p>
+<ul>
+<li>
+<p>スクラッチの座標<br>
+<img src="images/03.png" width="400px;" style="border: solid 1px #ccc;"></p>
+</li>
+<li>
+<p>enchant.jsの座標<br>
+<img src="images/04.png" width="400px;" style="border: solid 1px #ccc;"></p>
+</li>
+</ul>
+<h3 id="javascript%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E3%81%AE%E5%9F%BA%E7%A4%8E">JavaScriptプログラミングの基礎</h3>
+<p>enchant.jsでは<code>JavaScript</code>（じゃばすくりぷと）というプログラミング言語を使います。<br>
+タイピングによるプログラミングとなりますが、マインクラフトと書き方が異なる箇所がたくさんありますので、一つ一つ覚えていきましょう。</p>
+<ul>
+<li>
+<p>変数<br>
+<img src="images/05.png" width="300px;" style="border: solid 1px #ccc;"><br>
+enchant.jsでも<code>スクラッチ</code>と同じように変数が使えます。<br>
+変数であることを宣言するために、変数を定義する時には <code>var</code> を記述します。<br>
+宣言と同時に値を代入することもできます。</p>
+<pre class="hljs"><code><div><span class="hljs-comment">/* 
+    文法）
+    var 変数名;
+*/</span>
+<span class="hljs-keyword">var</span> data = <span class="hljs-number">0</span>;       <span class="hljs-comment">// 整数の変数</span>
+<span class="hljs-keyword">var</span> list = [];      <span class="hljs-comment">// 配列の変数</span>
+</div></code></pre>
+</li>
+</ul>
+<p></p>
+<ul>
+<li>
+<p>定数<br>
+定数とは、変数のようにデータを入れる箱ですが、変数と違い宣言時に入力した値の変更ができないのが特徴です。<br>
+定数であることを宣言するために、定数を定義する時には <code>const</code> を記述します。<br>
+宣言後は代入ができないので、宣言と同時に値を代入します。</p>
+<pre class="hljs"><code><div><span class="hljs-comment">/* 
+    文法）
+    const 変数名;
+*/</span>
+<span class="hljs-keyword">const</span> data = <span class="hljs-number">0</span>;
+</div></code></pre>
+<h4 id="%E5%AE%9A%E6%95%B0%E3%81%AE%E4%BD%BF%E7%94%A8%E4%BE%8B">定数の使用例</h4>
+<p>定数は消費税（8%=&gt;10%）など、特定の値を多くの箇所で利用するにも関わらず、将来変更される可能性があるものに利用します。</p>
+<p>例）定数利用前</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">var</span> penclil = <span class="hljs-number">100</span>;  <span class="hljs-comment">// 鉛筆</span>
+<span class="hljs-keyword">var</span> eraser = <span class="hljs-number">50</span>;    <span class="hljs-comment">// 消しゴム</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'鉛筆は'</span> + (pencil * <span class="hljs-number">1.08</span>) +<span class="hljs-string">'円です'</span>);
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'消しゴムは'</span> + (eraser * <span class="hljs-number">1.08</span>) +<span class="hljs-string">'円です'</span>);
+</div></code></pre>
+<p>例）定数利用後</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">const</span> TAX = <span class="hljs-number">1.1</span>;    <span class="hljs-comment">// 消費税</span>
+<span class="hljs-keyword">var</span> penclil = <span class="hljs-number">100</span>;  <span class="hljs-comment">// 鉛筆</span>
+<span class="hljs-keyword">var</span> eraser = <span class="hljs-number">50</span>;    <span class="hljs-comment">// 消しゴム</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'鉛筆は'</span> + (pencil * TAX) +<span class="hljs-string">'円です'</span>);
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'消しゴムは'</span> + (eraser * TAX) +<span class="hljs-string">'円です'</span>);
+</div></code></pre>
+<p>上記のようにプログラムしておくことで、同じ数値を何箇所も修正する必要がなくなります。</p>
+</li>
+<li>
+<p>コメント<br>
+ソースコードにはプログラムに影響しないコメントを記述することができます。<br>
+コメントはの書き方は2種類あります。</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// 1行コメント</span>
+<span class="hljs-comment">/* 
+    複数行のコメント
+*/</span>
+</div></code></pre>
+</li>
+</ul>
+<p>enchant.jsの用語とJavaScriptプログラミングの基礎の導入部分はここまでです。<br>
+次回からはプログラミングを実践しながら、もう少し基本を学習していきましょう。</p>
+<hr>
+<p>©️スタートプログラミング</p>
+
+</body>
+</html>

@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>step01.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+	font-size: 14px;
+	padding: 0 12px;
+	line-height: 22px;
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	color: #4080D0;
+	text-decoration: none;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
+	font-size: inherit;
+	line-height: auto;
+}
+
+a:hover {
+	color: #4080D0;
+	text-decoration: underline;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left: 5px solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 14px;
+	line-height: 19px;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+.mac code {
+	font-size: 12px;
+	line-height: 18px;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+/** Theming */
+
+.vscode-light,
+.vscode-light pre code {
+	color: rgb(30, 30, 30);
+}
+
+.vscode-dark,
+.vscode-dark pre code {
+	color: #DDD;
+}
+
+.vscode-high-contrast,
+.vscode-high-contrast pre code {
+	color: white;
+}
+
+.vscode-light code {
+	color: #A31515;
+}
+
+.vscode-dark code {
+	color: #D7BA7D;
+}
+
+.vscode-light pre:not(.hljs),
+.vscode-light code > div {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre:not(.hljs),
+.vscode-dark code > div {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre:not(.hljs),
+.vscode-high-contrast code > div {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+.vscode-light blockquote,
+.vscode-dark blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.vscode-high-contrast blockquote {
+	background: transparent;
+	border-color: #fff;
+}
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family:  "Meiryo", "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+</head>
+<body>
+<h1 id="enchantjs%EF%BC%88%E3%81%88%E3%82%93%E3%81%A1%E3%82%83%E3%82%93%E3%81%A8%E3%81%98%E3%81%87%E3%81%84%E3%81%88%E3%81%99%EF%BC%89%E3%81%A8%E3%81%AF%EF%BC%9F">enchant.js（えんちゃんとじぇいえす）とは？</h1>
+<p>これから<code>enchant.js</code>を本格的に学んでいきます。<br>
+まずはenchant.jsについての解説と、ゲームを開発していくための環境を構築していきます。</p>
+<h2 id="%E6%A6%82%E8%A6%81">概要</h2>
+<h3 id="javascript%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A0%E3%83%AF%E3%83%BC%E3%82%AF">JavaScriptゲームフレームワーク</h3>
+<p>enchant.jsは<code>JavaScript</code>（じゃばすくりぷと）というプログラミング言語で書かれた<code>ゲームフレームワーク</code>です。<br>
+<code>フレームワーク</code>とは、あらかじめ用意された便利な機能が使えるパッケージのことで、enchant.jsは簡単なプログラミングで本格的なゲームが開発できるようになっています。</p>
+<h3 id="%E3%83%9E%E3%83%AB%E3%83%81%E3%83%97%E3%83%A9%E3%83%83%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0">マルチプラットフォーム</h3>
+<p>enchant.jsは<code>マルチプラットフォーム</code>（パソコンやスマートフォンなど様々な機器に対応することができる）であることが特徴です。<br>
+これまで<code>スクラッチ</code>や<code>マインクラフト</code>で作ったプログラムはそれぞれのサービスでしか動きませんでしたが、enchant.jsではいろんな機器で動作します。<br>
+enchant.jsでゲームを作るだけで<code>Chrome</code>（くろーむ）などのパソコンブラウザから、iPhoneやAndroidなどスマートフォンなどでも動くようになります。</p>
+<h3 id="%E5%85%AC%E5%BC%8F%E3%82%B5%E3%82%A4%E3%83%88">公式サイト</h3>
+<p>enchant.jsの<a href="http://enchantjs.com/">公式サイト</a>を見てみましょう。<br>
+enchant.js本体のダウンロードができたり、APIドキュメント（便利な関数の使い方や意味が掲載されているページ）などが確認できます。</p>
+<p>※ 2019/10/07時点で公式サイトがダウンしています。ソースのダウンロードやAPIリファレンスの参照は直接以下にアクセスしてください。</p>
+<p><a href="https://github.com/uei/enchant.js-builds">ソースコード（本体）</a><br>
+<a href="https://github.com/wise9/enchant.js">ソースコード（サンプル）</a><br>
+<a href="http://wise9.github.io/enchant.js/doc/core/ja/index.html">APIリファレンス</a><br>
+<a href="http://wise9.github.io/enchant.js/doc/plugins/ja/index.html">APIリファレンス（プラグイン付き）</a></p>
+<h3 id="%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E8%A8%80%E8%AA%9E">プログラミング言語</h3>
+<p>enchant.jsで扱うプログラミング言語は、一般的にホームページを制作する時に使うWebのプログラミング言語を使います。<br>
+学習カリキュラムでは以下のような3つのプログラミング言語が出てきますが、基本的にはJavaScriptのみ使用します。</p>
+<ul>
+<li>HTML（えいちてぃーえむえる）</li>
+<li>CSS（しーえすえす）</li>
+<li>JavaScript（じゃばすくりぷと）</li>
+</ul>
+<h3 id="%E3%83%84%E3%83%BC%E3%83%AB">ツール</h3>
+<p>enchant.jsアプリを開発するにあたって、以下の2点を使用します。<br>
+PCにインストールされていない場合は、設定して進めてください。</p>
+<ul>
+<li>ブラウザ：Google Chrome（ぐーぐる　くろーむ）</li>
+<li>テキストエディタ：Visual Studio Code（びじゅある　すたじお　こーど）</li>
+</ul>
+<p><a href="https://www.google.com/intl/ja_jp/chrome/">Google Chromeダウンロード</a><br>
+<a href="https://azure.microsoft.com/ja-jp/products/visual-studio-code/">Visual Studio Codeダウンロード</a></p>
+<hr>
+<h2 id="%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89">環境構築</h2>
+<ol>
+<li>
+<p>任意のフォルダを作成<br>
+ゲームのソースコードを保存するためのマイフォルダを作成してください。</p>
+</li>
+<li>
+<p>テンプレートのコピー<br>
+教材パッケージに含まれる<code>template</code>フォルダをコピーします。</p>
+</li>
+<li>
+<p>ゲームタイトルを設定<br>
+<code>template</code>フォルダからコピーした中に<code>index.html</code>というファイルがあります。<br>
+<code>index.html</code>を<code>VisualStudioCode</code>で開き、以下の <code>ゲームのタイトル</code> 部分を変更します。</p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>ゲームのタイトル<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>     
+</div></code></pre>
+</li>
+<li>
+<p>ログを設定して正常動作を確認
+コピーしたプログラムが正常に動作するか確認しましょう。<br>
+ログを出力するプログラムを書いて、次のステップで実行します。</p>
+<pre class="hljs"><code><div>core.onload = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Hello enchant.js!'</span>);   <span class="hljs-comment">// 追加</span>
+};
+</div></code></pre>
+</li>
+<li>
+<p>アプリを実行する<br>
+enchant.jsのアプリの実行（スクラッチでいう緑のハタ）は <code>index.html</code> をダブルクリックし、ブラウザで起動します。<br>
+<code>index.html</code> をダブルクリックするとブラウザが起動し、以下の2点が表示されていれば成功です。</p>
+<ul>
+<li>
+<p>タブの表示<br>
+ブラウザのタブに以下のようなゲームのタイトルが表示されていること。<br>
+<img src="images/01.png" width="200px;" style="border: solid 1px #ccc;"></p>
+</li>
+<li>
+<p>ログの出力<br>
+<code>検証/Console</code> に入力したメッセージが表示されていること。<br>
+<img src="images/02.png" width="500px;" style="border: solid 1px #ccc;"></p>
+</li>
+</ul>
+</li>
+</ol>
+<p>これでenchant.jsを学ぶ準備ができました。<br>
+次回から本格的にプログラムを書いてenchant.jsでゲームを作ってみましょう。</p>
+<hr>
+<p>©️スタートプログラミング</p>
+
+</body>
+</html>
